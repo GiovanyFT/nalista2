@@ -1,7 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:nalista2/telas/tela_abertura.dart';
 
-void main() {
+// Para chamar Firebase.initializeApp()
+import 'package:firebase_core/firebase_core.dart';
+
+Future<void> main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp();
   runApp(MyApp());
 }
 

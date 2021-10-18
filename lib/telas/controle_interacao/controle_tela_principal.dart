@@ -16,16 +16,15 @@ class ControleTelaPrincipal{
 
   ControleTelaPrincipal(this.usuario);
 
- // CollectionReference get _collection_itens => Firestore.instance.collection('itens');
- // Stream<QuerySnapshot> get stream => _collection_itens.where("id_usuario", isEqualTo: usuario.id).snapshots();
+  CollectionReference<Map<String, dynamic>> get _collection_itens => FirebaseFirestore.instance.collection('itens');
+  Stream<QuerySnapshot> get stream => _collection_itens.where("id_usuario", isEqualTo: usuario.id).snapshots();
 
   void obterItens(QuerySnapshot data){
-  /*  document_itens = data.documents;
-    itens = document_itens.map((DocumentSnapshot document) {
-      return Item.fromMap(document.data);
+    document_itens = data.docs;
+    itens = document_itens!.map((DocumentSnapshot  document) {
+      Map<String, dynamic> data = document.data()! as Map<String, dynamic>;
+      return Item.fromMap(data);
     }).toList();
-    */
-
   }
 
   void excluirItem(int index){

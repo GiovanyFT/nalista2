@@ -24,7 +24,7 @@ class ControleTelaLogin {
   // Autenticação
   final FirebaseAuth _auth = FirebaseAuth.instance;
 
- // CollectionReference get _collection_usuarios => Firestore.instance.collection('usuarios');
+  CollectionReference<Map<String, dynamic>> get _collection_usuarios => FirebaseFirestore.instance.collection('usuarios');
 
   void logar(BuildContext context) async{
     if (formkey.currentState!.validate()){
@@ -51,15 +51,13 @@ class ControleTelaLogin {
 
   void _irParaTelaPrincipal(User? user, BuildContext context) {
     // Buscando o usuário no serviço de armazenamento e chamando a tela Principal
- /*   _collection_usuarios.
+    _collection_usuarios.
       where("email", isEqualTo: "${user!.email}").snapshots().
       listen((data) {
-        Usuario usuario = Usuario.fromMap(data.documents[0].data);
-        usuario.id = data.documents[0].documentID;
+        Usuario usuario = Usuario.fromMap(data.docs[0].data());
+        usuario.id = data.docs[0].id;
         push(context, TelaPrincipal(usuario), replace: true);
       });
-      */
-
   }
 
   void cadastrar(BuildContext context) async{
@@ -72,13 +70,13 @@ class ControleTelaLogin {
             email: login,
             password: senha
         );
+
         // No serviço de armazenamento
-  /*      DocumentReference docRef = _collection_usuarios.document();
-        Future<void> future = docRef.setData({'email': userCredential.user!.email});
-        future.then( (value){
-          _irParaTelaPrincipal(userCredential.user, context);
-        });
-*/
+        _collection_usuarios.add({
+          'email': login,
+        }).then((value) => _irParaTelaPrincipal(userCredential.user, context))
+          .catchError((error) => print("Falha ao adicionar o usuário: $error"));
+
 
       } on FirebaseAuthException catch (e) {
         if (e.code == 'weak-password') {

@@ -9,7 +9,7 @@ class ControleTelaEdicaoItem {
 
   ControleTelaEdicaoItem(this.usuario);
 
- // CollectionReference get _collection_itens => Firestore.instance.collection('itens');
+  CollectionReference<Map<String, dynamic>> get _collection_itens => FirebaseFirestore.instance.collection('itens');
 
 
   // Controlador de formulário (para fazer validações)
@@ -43,9 +43,11 @@ class ControleTelaEdicaoItem {
       id_usuario: usuario.id,
       eh_urgente: eh_urgente,
     );
+
     // Salvando no serviço de armazenamento
-  //  DocumentReference docRef = _collection_itens.document();
-  //  docRef.setData(item.toMap());
+    DocumentReference docRef = _collection_itens.doc();
+    docRef.set(item.toMap());
+
   }
 
   void salvar_item(BuildContext context) {

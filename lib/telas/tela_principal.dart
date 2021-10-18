@@ -58,7 +58,7 @@ class _TelaPrincipalState extends State<TelaPrincipal> {
   Container _stream_builder() {
     return Container(
       padding: EdgeInsets.all(16),
- /*     child: StreamBuilder<QuerySnapshot>(
+      child: StreamBuilder<QuerySnapshot>(
           stream: _controle.stream,
           builder: (context, snapshot) {
             if(!snapshot.hasData){
@@ -66,10 +66,10 @@ class _TelaPrincipalState extends State<TelaPrincipal> {
                 child: CircularProgressIndicator(),
               );
             }
-            _controle.obterItens(snapshot.data);
+            _controle.obterItens(snapshot.data!);
             return _listView();
           }
-      ),*/
+      ),
     );
   }
 
