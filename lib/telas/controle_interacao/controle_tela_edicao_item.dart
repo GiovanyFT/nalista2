@@ -43,11 +43,9 @@ class ControleTelaEdicaoItem {
       id_usuario: usuario.id,
       eh_urgente: eh_urgente,
     );
-
     // Salvando no serviço de armazenamento
     DocumentReference docRef = _collection_itens.doc();
     docRef.set(item.toMap());
-
   }
 
   void salvar_item(BuildContext context) {
