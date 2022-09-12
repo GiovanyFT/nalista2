@@ -40,9 +40,9 @@ class ControleTelaLogin {
         _irParaTelaPrincipal(userCredential.user, context);
       } on FirebaseAuthException catch (e) {
         if (e.code == 'user-not-found') {
-          MensagemAlerta("Erro: Usuário não encontrado para o email informado");
+          MensagemAlerta(context, "Erro: Usuário não encontrado para o email informado");
         } else if (e.code == 'wrong-password') {
-          MensagemAlerta("Erro: Password inválido!!!");
+          MensagemAlerta(context, "Erro: Password inválido!!!", );
           print('Wrong password provided for that user.');
         }
       }
@@ -80,9 +80,9 @@ class ControleTelaLogin {
 
       } on FirebaseAuthException catch (e) {
         if (e.code == 'weak-password') {
-          MensagemAlerta("Erro: A senha fornecida é muito fraca");
+          MensagemAlerta(context, "Erro: A senha fornecida é muito fraca");
         } else if (e.code == 'email-already-in-use') {
-          MensagemAlerta("Erro: Já existe conta com o email informado");
+          MensagemAlerta(context, "Erro: Já existe conta com o email informado");
         }
       } catch (e) {
         print(e);
