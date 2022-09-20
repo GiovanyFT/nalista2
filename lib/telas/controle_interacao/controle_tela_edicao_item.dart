@@ -3,6 +3,9 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:nalista2/dominio/item.dart';
 import 'package:nalista2/dominio/usuario.dart';
 
+import '../../util/nav.dart';
+
+
 
 class ControleTelaEdicaoItem {
   Usuario usuario;
@@ -51,7 +54,7 @@ class ControleTelaEdicaoItem {
   void salvar_item(BuildContext context) {
     if (formkey.currentState!.validate()) {
       _inserir_item();
-      Navigator.pop(context, "Salvou");
+      pop(context);
     }
   }
 }
