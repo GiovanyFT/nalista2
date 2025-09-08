@@ -1,8 +1,8 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.compra.nalista2">
    <application
-        android:label="Na Lista 2.0"
-        android:icon="@mipmap/launcher_icon">
+        android:label="NaLista"
+        android:icon="@mipmap/ic_launcher">
         <activity
             android:name=".MainActivity"
             android:exported="true"
