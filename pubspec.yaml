@@ -39,7 +39,7 @@ dev_dependencies:
   flutter_test:
     sdk: flutter
   ftoast: ^2.0.0
-  flutter_launcher_icons: ^0.14.1
+  icons_launcher: ^3.0.2
   firebase_auth: ^5.3.1
   cloud_firestore: ^5.4.4
   email_validator: ^3.0.0
@@ -54,10 +54,13 @@ dev_dependencies:
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec
 
-flutter_icons:
-  android: "launcher_icon"
-  ios: true
+icons_launcher:
   image_path: "assets/icon/icone_aplicacao.png"
+  platforms:
+    android:
+      enable: true
+    ios:
+      enable: true
 
 # The following section is specific to Flutter.
 flutter:
