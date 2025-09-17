@@ -40,9 +40,10 @@ class ControleTelaEdicaoItem {
   }
 
   void _inserir_item() {
+    int quantidade = int.tryParse(controlador_quantidade.text) ?? 0;
     Item item = Item(
       nome: controlador_nome.text,
-      quantidade: int.parse(controlador_quantidade.text),
+      quantidade: quantidade,
       id_usuario: usuario.id,
       eh_urgente: eh_urgente,
     );
